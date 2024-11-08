@@ -37,7 +37,20 @@ export class AppController {
     return true; 
   }
   
+  @Get('factorial/:n')
+  getFactorial(@Param('n') num: string): { factorial: number } {
+    const number = parseInt(num, 10);
+    const result = this.factorial(number);
+    return { factorial: result };
+  }
   
+  private factorial(n: number): number {
+    let result = 1;
+    for (let i = 1; i <= n; i++) {
+      result *= i;
+    }
+    return result;
+  }
   
 
 }
